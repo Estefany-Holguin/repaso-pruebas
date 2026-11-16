@@ -30,4 +30,29 @@ class CalculadoraMultasTest {
     void rechazaUnMaterialDesconocido() {
         assertThrows(IllegalArgumentException.class, () -> calculadora.calcularMulta(5, "periodico"));
     }
+    @Test
+    @DisplayName("Rechaza un número de días negativo")
+    void rechazaUnNumeroDeDiasNegativo() {
+        assertThrows(IllegalArgumentException.class, () -> calculadora.calcularMulta(-1, "libro"));
+    }
+    @Test
+    @DisplayName("Rechaza un número de días mayor a 90")
+    void rechazaUnNumeroDeDiasMayorA90() {
+        assertThrows(IllegalArgumentException.class, () -> calculadora.calcularMulta(91, "revista"));
+    }
+    @Test
+    @DisplayName("Un libro con 2 dias de retraso no paga multa")
+    void libroConDosDiasNoPagaMulta() {
+        assertEquals(0, calculadora.calcularMulta(2, "libro"));
+    }
+    @Test
+    @DisplayName("un libro con 11 dias paga el doble de la tarifa diaria")
+    void libroCon11DiasPagaElDobleDeLaTarifaDiaria() {
+        assertEquals(5000, calculadora.calcularMulta(11, "libro"));
+    }
+    @Test
+    @DisplayName("una revista con 3 dias paga la tarifa diaria")
+    void revistaCon3DiasPagaLaTarifaDiaria() {
+        assertEquals(300, calculadora.calcularMulta(3, "revista"));
+    }
 }

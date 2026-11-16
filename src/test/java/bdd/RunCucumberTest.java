@@ -1,4 +1,4 @@
-package biblioteca.bdd;
+package bdd;
 
 import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 
