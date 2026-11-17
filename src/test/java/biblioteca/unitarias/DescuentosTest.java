@@ -14,21 +14,21 @@ public class DescuentosTest {
     @Test
     @DisplayName("Un usuario externo no tiene descuento")
     void usuarioExternoNoTieneDescuento() {
-        assertEquals(0, descuentos.descuento("externo"));
+        assertEquals(0, descuentos.aplicardescuento("externo"));
     }
     @Test
     @DisplayName("Un usuario de tipo estudiante tiene un 10% de descuento")
     void usuarioEstudianteTieneDescuento() {
-        assertEquals(10, descuentos.descuento("estudiante"));
+        assertEquals(10, descuentos.aplicardescuento("estudiante"));
     }
     @Test
     @DisplayName("Un usuario de tipo docente tiene un 20% de descuento")
     void usuarioDocenteTieneDescuento() {
-        assertEquals(20, descuentos.descuento("docente"));
+        assertEquals(20, descuentos.aplicardescuento("docente"));
     }
     @Test
     @DisplayName("Un valor negattivo es un error")
     void valorNegativoEsError() {
-        assertThrows(IllegalArgumentException.class, () -> descuentos.descuento("negativo"));
+        assertThrows(IllegalArgumentException.class, () -> descuentos.aplicardescuento("negativo"));
     }
 }
